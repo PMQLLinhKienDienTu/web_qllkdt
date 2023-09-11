@@ -117,13 +117,38 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="CSS\Style.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\banner-left.png" />
+    <Content Include="img\banner-right.png" />
+    <Content Include="img\banner1.png" />
+    <Content Include="img\banner2.png" />
+    <Content Include="img\banner3.png" />
+    <Content Include="img\banner4.png" />
+    <Content Include="img\banner5.png" />
+    <Content Include="img\bell.png" />
+    <Content Include="img\bn1.png" />
+    <Content Include="img\bn2.png" />
+    <Content Include="img\bn3.png" />
+    <Content Include="img\bn4.png" />
+    <Content Include="img\dmca.png" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\mystical phoenix.png" />
+    <Content Include="img\shopping-cart.png" />
+    <Content Include="img\thongbao.png" />
+    <Content Include="img\tietkiem.png" />
+    <Content Include="img\user-main.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -160,8 +185,10 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Views\_LayoutPage1.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
