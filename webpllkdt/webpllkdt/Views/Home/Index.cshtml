@@ -1,8 +1,28 @@
-﻿
+﻿@model List<webpllkdt.Models.SanPham>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Đây là trang chủ</h2>
+<div class="row row-cols-5">
+    @foreach (var item in Model)
+    {
+        <div class="col mt-2 mb-3">
+            <div class="card">
+                <div class="card-img p-3 position-relative">
+                    <img class="w-100" src="#" alt="Alternate Text" />
+                </div>
+                <div class="card-body">
+                    <p style="display: block; display: -webkit-box; -webkit-line-clamp: 2; /* số dòng hiển thị */ -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; " class="card-title text-black">
+                        @item.TenSP
+                    </p>
+                    <p style="height: 80px;" class="card-text text-primary">
+                        <span style="color: rgb(230, 152, 58); font-weight: 500; font-size: 12px; line-height: 16px; ">Còn @item.SoLuong sản phẩm</span> <br />
+                        <span style="font-size: 15px; font-weight: 700; color: rgb(20, 53, 195);line-height: 24px ">@item.GiaBan.Value.ToString("C")</span> <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
