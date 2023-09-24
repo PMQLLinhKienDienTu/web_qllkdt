@@ -29,10 +29,13 @@ namespace webpllkdt.Models
 
         public int? TGBaoHanh { get; set; }
 
-        [StringLength(50)]
-        public string HinhAnh { get; set; }
-
         public int? MaPhanLoai { get; set; }
+
+        [StringLength(100)]
+        public string GhiChu { get; set; }
+
+        [Column(TypeName = "image")]
+        public byte[] HinhAnh { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
