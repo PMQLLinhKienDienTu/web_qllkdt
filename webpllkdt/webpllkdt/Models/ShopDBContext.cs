@@ -8,7 +8,7 @@ namespace webpllkdt.Models
     public partial class ShopDBContext : DbContext
     {
         public ShopDBContext()
-            : base("name=ShopDBContextLinhKien")
+            : base("name=ShopDBContextConnectionString")
         {
         }
 
@@ -28,6 +28,11 @@ namespace webpllkdt.Models
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.MatKhau)
                 .IsFixedLength();
+
+            modelBuilder.Entity<SanPham>()
+                .HasMany(e => e.ChiTietHoaDons)
+                .WithRequired(e => e.SanPham)
+                .WillCascadeOnDelete(false);
         }
     }
 }

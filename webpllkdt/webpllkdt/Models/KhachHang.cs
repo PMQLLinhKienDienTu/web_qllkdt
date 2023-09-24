@@ -21,7 +21,8 @@ namespace webpllkdt.Models
         [StringLength(50)]
         public string HoTen { get; set; }
 
-        public int? SDT { get; set; }
+        [StringLength(50)]
+        public string SDT { get; set; }
 
         [StringLength(50)]
         public string TaiKhoan { get; set; }
@@ -34,6 +35,13 @@ namespace webpllkdt.Models
 
         [Column(TypeName = "date")]
         public DateTime? NgayTaoThe { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Email { get; set; }
+
+        [StringLength(50)]
+        public string DiaChi { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }

@@ -12,15 +12,11 @@ namespace webpllkdt.Models
         [Key]
         public int MaChiTietHoaDon { get; set; }
 
-        public double? TongTien { get; set; }
+        public int Soluong { get; set; }
 
-        public double? GiamGia { get; set; }
+        public double Gia { get; set; }
 
-        public int? MaHoaDon { get; set; }
-
-        public int? MaSP { get; set; }
-
-        public virtual HoaDon HoaDon { get; set; }
+        public int MaSp { get; set; }
 
         public virtual SanPham SanPham { get; set; }
     }

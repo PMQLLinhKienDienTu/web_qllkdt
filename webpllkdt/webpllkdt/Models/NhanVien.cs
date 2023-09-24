@@ -38,6 +38,9 @@ namespace webpllkdt.Models
 
         public bool? TinhTrang { get; set; }
 
+        [Column(TypeName = "image")]
+        public byte[] HinhAnh { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
