@@ -76,7 +76,7 @@
         <nav style="width: 1200px" class="navbar navbar-expand-sm navbar-dark m-auto">
             <ul style="max-width: 1200px" class="navbar-nav a-gray">
                 <li class="nav-item me-2  align-self-center">
-                    <a href="/home/trangchu">
+                    <a href="/home/index">
                         @*<img style="width: 100px" src="~/img/logo.png" alt="Alternate Text" />*@
                         <img style="width: 80px;height: 70px" src="~/img/mystical phoenix.png" />
                     </a>
@@ -140,22 +140,22 @@
                 <li class="nav-item ms-2">
                     <div class="d-flex justify-content-center">
                         <div class="mt-3 mx-3">
-                            <a href="/cart/index">
+                            <a href="/GioHang/index">
                                 <img style="width: 35px" src="~/img/shopping-cart.png" alt="Alternate Text" />
                             </a>
                         </div>
                         <div class="mt-3">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <a class="text-secondary" href="/cart/index">
+                                <a class="text-secondary" href="/GioHang/index">
                                     Giỏ hàng của bạn<br /> (@{Html.RenderPartial("SessionView");}) sản phẩm
                                 </a>
                             }
                             else
                             {
-                                <a class="text-secondary" href="/cart/index">
-                                    Giỏ hàng của bạn<br /> (0) sản phẩm
-                                </a>
+                        <a class="text-secondary" href="/GioHang/index">
+                            Giỏ hàng của bạn<br /> (@{Html.RenderPartial("SessionView");}) sản phẩm
+                        </a>
                             }
                         </div>
                     </div>
@@ -173,19 +173,34 @@
                     </a>
                     <ul class="navbar-nav navigation-2">
                         <li class="nav-item blue">
-                            <a href="/home/acer">ACER</a>
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=Intel, AMD">Intel, AMD</a>
                         </li>
                         <li class="nav-item blue">
-                            <a href="/home/asus">ASUS</a>
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=Kingston, Corsair, Crucial">Kingston, Corsair, Crucial</a>
                         </li>
                         <li class="nav-item blue">
-                            <a href="/home/msi">MSI</a>
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=Western Digital, Seagate, Samsung, Kingston">Western Digital, Seagate, Samsung, Kingston</a>
                         </li>
                         <li class="nav-item blue">
-                            <a href="/home/dell">DELL</a>
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=ASUS, MSI, Gigabyte, ASRock">ASUS, MSI, Gigabyte, ASRock</a>
                         </li>
                         <li class="nav-item blue">
-                            <a href="/home/apple">APPLE</a>
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=NVIDIA, AMD (Radeon)">NVIDIA, AMD (Radeon)</a>
+                        </li>
+                        <li class="nav-item blue">
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=Corsair, EVGA, Seasonic">Corsair, EVGA, Seasonic</a>
+                        </li>
+                        <li class="nav-item blue">
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=Noctua, Cooler Master, be quiet">Noctua, Cooler Master, be quiet</a>
+                        </li>
+                        <li class="nav-item blue">
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=Dell, ASUS, LG, Samsung, Acer">Dell, ASUS, LG, Samsung, Acer</a>
+                        </li>
+                        <li class="nav-item blue">
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=Logitech, Corsair, Razer, SteelSeries">Logitech, Corsair, Razer, SteelSeries</a>
+                        </li>
+                        <li class="nav-item blue">
+                            <a href="/sanpham/sanphamtheothuonghieu?thuonghieu=Logitech, Razer, SteelSeries, Corsair">Logitech, Razer, SteelSeries, Corsair</a>
                         </li>
                     </ul>
                 </li>
