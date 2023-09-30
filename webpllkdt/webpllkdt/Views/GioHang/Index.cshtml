@@ -1,0 +1,101 @@
+﻿@model List<webpllkdt.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@{
+    int aidi = 999;
+    int soluong = 1;
+    int sum = 0;
+    int count = 0;
+    ViewBag.aidi = aidi;
+    ViewBag.soluong = soluong;
+    ViewBag.sum = sum;
+    ViewBag.count = count;
+}
+<div class="row">
+    <div class="col-6">
+        <h2 class="">Giỏ Hàng</h2>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+        <a class="btn btn-outline-danger mt-3 mb-3" href="/cart/deleteall">Xoá giỏ hàng</a>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    ViewBag.count += item.Quantity;
+}
+@if (Model.Count > 0)
+{
+    <table class="table table-bordered">
+        <tr style="text-align: center; background-color: lightblue">
+            <th>Mã SP</th>
+            <th style="width: 320px">Tên SP</th>
+            <th>Ảnh sản phẩm</th>
+            <th>Số Lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="text-center" style="background-color: lightgoldenrodyellow; color: blue">
+                <td>@item.SanPhams.MaSP</td>
+                <td>@item.SanPhams.TenSP</td>
+                <td>
+                    <img style="width: 100px; height: 100px; border-radius: 15px" src="~/img/@(item.SanPhams.TenSP).png" alt="Alternate Text" />
+                </td>
+                <td class="d-flex justify-content-center">
+                    <input class="w-50" type="number" id="@ViewBag.soluong" name="quantity" value="@item.Quantity" />
+                    <button style="margin-left: 15px" id="@ViewBag.aidi" class="btn btn-primary">Cập nhập</button>
+
+                </td>
+                <td>@item.SanPhams.GiaBan.Value.ToString("C")</td>
+                <td>
+                    @(Convert.ToDecimal(item.SanPhams.GiaBan * item.Quantity).ToString("C"))
+                </td>
+                <td class="">
+
+                    @*<a href="/cart/update?id=@item.SanPhams.ID&&quantity=@item.Quantity" id="capnhap" class="btn">Cập nhật giỏ hàng</a>*@
+                    <a href="/GioHang/delete?id=@item.SanPhams.MaSP" class="btn btn-danger">Xoá</a>
+                    <script>
+                        $(document).ready(function () {
+                            $('#@ViewBag.aidi').click(function () {
+                                const value = $('#@ViewBag.soluong').val();
+                                window.location.href = "/GioHang/update?id=@item.SanPhams.MaSP&&quantity=" + value;
+                            });
+                        });
+                    </script>
+
+                    @{
+                        ViewBag.aidi += 1;
+                        ViewBag.soluong += 1;
+                        ViewBag.sum += (Convert.ToDecimal(item.SanPhams.GiaBan * item.Quantity));
+                        ViewBag.count += item.Quantity;
+                    }
+                </td>
+            </tr>
+        }
+        <tr style="background-color: khaki">
+            <td colspan="7">
+                Thành tiền: <span style="color: red">@ViewBag.sum.ToString("C")</span>
+            </td>
+        </tr>
+    </table>
+    @*<button id="btnUpdate btn" class="btn">Cập nhật giỏ hàng</button>*@
+    <a class="btn btn-primary mt-3 mb-3" href="/home/index">Tiếp tục mua hàng</a>
+
+    <a onclick="tb()" class="btn btn-success mt-3 mb-3" href="#">Thanh toán</a>
+    <script>
+        function tb() {
+            alert("Chức năng chưa có!!!")
+        }
+    </script>
+}
+else
+{
+    <h3 class="text-danger mt-3 mb-3">Chưa có sản phẩm nào trong giỏ hàng</h3>
+    <a class="btn btn-primary mt-3 mb-3" href="/home/index">Tiếp tục mua hàng</a>
+}
+

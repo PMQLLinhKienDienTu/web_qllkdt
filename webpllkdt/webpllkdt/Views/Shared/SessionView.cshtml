@@ -1,0 +1,23 @@
+﻿
+@using webpllkdt.Models
+
+
+@{
+    int temp = 0;
+    var cart = Session["CartSession"];
+    if (cart != null)
+    {
+        var list = (List<CartItem>)cart;
+
+        foreach (var item in list)
+        {
+            temp += item.Quantity;
+            ViewBag.temp = temp;
+        }
+        <span>@ViewBag.temp</span>
+    }
+    else
+    {
+        <span>0</span>
+    }
+}
