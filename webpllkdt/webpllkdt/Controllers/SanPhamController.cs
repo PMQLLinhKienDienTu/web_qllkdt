@@ -14,7 +14,7 @@ namespace webpllkdt.Controllers
         // GET: SanPham
         public ActionResult SanPhamTheoThuongHieu(string thuonghieu = "")
         {
-            var sanpham = db.SanPhams.ToList();
+            List<SanPham> sanpham = db.SanPhams.ToList();
             //Thương hiệu
             switch (thuonghieu)
             {
@@ -71,7 +71,7 @@ namespace webpllkdt.Controllers
             {
                 // Tạo MemoryStream từ dữ liệu hình ảnh
                 MemoryStream memoryStream = new MemoryStream(sp.HinhAnh);
-                string imagePath = Server.MapPath("~/img/" + sp.TenSP + ".png");
+                string imagePath = Server.MapPath("~/img/" + sp.TenSP.Trim() + ".png");
 
                 // Kiểm tra xem tệp hình ảnh đã tồn tại hay chưa
                 if (!System.IO.File.Exists(imagePath))
