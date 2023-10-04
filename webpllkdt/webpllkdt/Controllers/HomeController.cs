@@ -16,12 +16,12 @@ namespace webpllkdt.Controllers
         // GET: TrangChu
         public ActionResult Index()
         {
-            var sp = db.SanPhams.ToList();
-            foreach (var item in sp)
+            List<SanPham> sp = db.SanPhams.ToList();
+            foreach (SanPham item in sp)
             {
                 if (item.HinhAnh != null && item.HinhAnh.Length > 0)
                 {
-                    string imagePath = Server.MapPath("~/img/" + item.TenSP + ".png");
+                    string imagePath = Server.MapPath("~/img/" + item.TenSP.Trim() + ".png");
 
                     // Kiểm tra xem tệp hình ảnh đã tồn tại hay chưa
                     if (!System.IO.File.Exists(imagePath))
