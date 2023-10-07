@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using webpllkdt.Models;
+using webpllkdt.Filter;
 
 namespace webpllkdt.Controllers
 {
@@ -12,6 +13,7 @@ namespace webpllkdt.Controllers
         ShopDBContext db = new ShopDBContext();
         private const string CartSession = "CartSession";
         // GET: GioHang
+        [MyAuthenFilter]
         public ActionResult Index()
         {
             var cart = Session[CartSession];
