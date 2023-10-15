@@ -77,5 +77,37 @@ namespace webpllkdt.Areas.Admin.Controllers
             ViewBag.plsp = plsp;
             return View(sp);
         }
+        public ActionResult EditSanPham(int id)
+        {
+            SanPham sp = db.SanPhams.Where(row => row.MaSP == id).FirstOrDefault();
+            return View(sp);
+        }
+        [HttpPost]
+        public ActionResult EditSanPham(int ID, SanPham sp)
+        {
+            SanPham sanPham = db.SanPhams.Where(row => row.MaSP == ID).FirstOrDefault();
+            //SanPham sp = db.SanPhams.Where(row => row.ID == id).FirstOrDefault();
+            //update ChiTietSanPham
+            sanPham.SoLuong = sp.SoLuong;
+            sanPham.GiaNhap = sp.GiaNhap;
+            sanPham.GiaBan = sp.GiaBan;
+            sanPham.GhiChu = sp.GhiChu;
+
+            db.SaveChanges();
+            return RedirectToAction("quanly");
+        }
+        public ActionResult DeleteSanPham(int id)
+        {
+            SanPham sp = db.SanPhams.Where(row => row.MaSP == id).FirstOrDefault();
+            return View(sp);
+        }
+        [HttpPost]
+        public ActionResult DeleteSanPham(int id, SanPham p)
+        {
+            SanPham sp = db.SanPhams.Where(row => row.MaSP == id).FirstOrDefault();
+            db.SanPhams.Remove(sp);
+            db.SaveChanges();
+            return RedirectToAction("quanly");
+        }
     }
 }
