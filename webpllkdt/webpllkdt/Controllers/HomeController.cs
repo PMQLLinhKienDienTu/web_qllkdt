@@ -21,7 +21,7 @@ namespace webpllkdt.Controllers
             {
                 if (item.HinhAnh != null && item.HinhAnh.Length > 0)
                 {
-                    string imagePath = Server.MapPath("~/img/" + item.TenSP.Trim() + ".png");
+                    string imagePath = Server.MapPath("~/img/HinhAnh/" + item.TenSP.Trim() + ".png");
 
                     // Kiểm tra xem tệp hình ảnh đã tồn tại hay chưa
                     if (!System.IO.File.Exists(imagePath))

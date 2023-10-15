@@ -1,0 +1,48 @@
+﻿@model webpllkdt.Models.SanPham
+@{
+    ViewBag.Title = "ChiTietSP";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+@if (Model != null)
+{
+<div style="width: 100%">
+    <div style="width: 900px; margin: 0 auto; text-align:center;font-size: 30px;font-weight:bold; color:cyan; text-shadow: 2px 3px 5px #808080">
+        <p>@Model.TenSP</p>
+    </div>
+</div>
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Hình ảnh</th>
+                        <th>Phân loại</th>
+                        <th>Nhà sản xuất</th>
+                        <th>Số lượng tồn</th>
+                        <th>Giá nhập</th>
+                        <th>Giá bán</th>
+                        <th>Mô tả</th>
+                    </tr>
+                    <tr>
+                        <td>@Model.MaSP</td>
+                        <td>
+                            <img style="width: 80px; height: 80px; border: 1px solid lightgray; border-radius: 10px" src="~/img/HinhAnh/@(Model.TenSP).png" alt="Alternate Text" />
+                        </td>
+                        <td>@ViewBag.plsp.TenPhanLoai</td>
+                        <td>@ViewBag.plsp.NhaSanXuat</td>
+                        <td>@Model.SoLuong</td>
+                        <td>@Model.GiaNhap.Value.ToString("C")</td>
+                        <td>@Model.GiaBan.Value.ToString("C")</td>
+                        <td>@Model.GhiChu</td>
+                    </tr>
+                </table>
+
+                                <div class="text-center">
+                                    <div style="width: 300px; margin:0 auto">
+                                        <a class="btn btn-primary mb-4" href="/admin/admin/quanly">Quay lại</a>
+                                    </div>
+                                </div> }
+                                            else
+                                            {
+                                <div style="color:red; margin: auto;font-weight:bold">Sản phẩm này chưa có thông tin chi tiết</div>
+                                                <a class="btn btn-primary mt-3 mb-3" href="/admin/admin/quanly">Quay lại</a>}
+

@@ -1,0 +1,24 @@
+﻿@model webpllkdt.Models.SanPham
+
+@{
+    ViewBag.Title = "DeleteSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<form action="/admin/admin/deletesanpham?id=@Model.MaSP" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="MaSP">ID</label>
+            <input class="form-control" type="number" name="MaSP" id="MaSP" value="@Model.MaSP" />
+        </div>
+        <div class="col-md-6">
+            <label for="TenSP">Tên Sản Phẩm</label>
+            <input class="form-control" type="text" name="TenSP" id="TenSP" value="@Model.TenSP" />
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-danger mt-3 mb-3 mx-3">Xóa</button>
+        <a href="/admin/admin/quanly" class="btn btn-primary mt-3 mb-3">Quay lại</a>
+    </div>
+</form>
+
