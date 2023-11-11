@@ -1,0 +1,63 @@
+﻿@model webpllkdt.Models.SanPham
+
+@{
+    ViewBag.Title = "Insert";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<form action="/Admin/Admin/Insert" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="MaPhanLoai">Thương hiệu</label>
+            <select class="form-control" name="MaPhanLoai" id="MaPhanLoai">
+                <option value="">Please Select...</option>
+                @foreach (var item in ViewBag.pl)
+                {
+    <option value="@item.MaPhanLoai">@item.NhaSanXuat</option>
+}
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="TenSP">
+                Tên sản phẩm
+            </label>
+            <input class="form-control" type="text" name="TenSP" id="TenSP" value="" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="SoLuong">
+                Số Lượng
+            </label>
+            <input class="form-control" type="number" name="SoLuong" id="SoLuong" value="" />
+        </div>
+        <div class="col-md-6">
+            <label for="GiaNhap">
+                Giá nhập
+            </label>
+            <input class="form-control" type="number" name="GiaNhap" id="GiaNhap" value="" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="GiaBan">
+                Giá Bán
+            </label>
+            <input class="form-control" type="number" name="GiaBan" id="GiaBan" value="" />
+        </div>
+        <div class="col-md-6">
+            <label for="GhiChu">Mô tả</label>
+            <input class="form-control" type="text" name="GhiChu" id="GhiChu" value="" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label for="HinhAnh">Hình</label>
+            <input class="form-control" type="file" name="HinhAnh" id="HinhAnh" value="" />
+        </div>
+    </div>
+    <div class="mt-3 mb-3">
+        <button type="submit" class="btn btn-primary mt-4">Lưu</button>
+        <a href="/admin/admin/quanly" class="btn btn-danger mt-4">Hủy</a>
+    </div>
+</form>
