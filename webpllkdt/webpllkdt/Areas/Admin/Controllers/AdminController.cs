@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 using webpllkdt.Models;
-using webpllkdt.Identity;
-using webpllkdt.Filter;
-using System.Web.Helpers;
-using webpllkdt.ViewModel;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
+using System.IO;
+using System.Web;
 
 namespace webpllkdt.Areas.Admin.Controllers
 {
@@ -109,5 +104,50 @@ namespace webpllkdt.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("quanly");
         }
+        public ActionResult Insert()
+        {
+            List<PhanLoaiSanPham> pl = db.PhanLoaiSanPhams.ToList();
+            ViewBag.pl = pl;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Insert(SanPham sanpham, HttpPostedFileBase hinh)
+        {
+            string fileName = Path.GetFileName(hinh.FileName);
+            string pathToSave = Path.Combine(Server.MapPath("~/img/HinhAnh"), fileName);
+
+            // Lưu hình ảnh vào thư mục trên máy chủ
+            hinh.SaveAs(pathToSave);
+
+
+            //// Đọc dữ liệu hình ảnh thành mảng byte
+            //byte[] bytes;
+            //using (BinaryReader reader = new BinaryReader(HinhAnh.InputStream))
+            //{
+            //    bytes = reader.ReadBytes(HinhAnh.ContentLength);
+            //}
+
+            //// Gán mảng byte vào đối tượng sanpham
+            //sanpham.HinhAnh = bytes;
+
+            byte[] imageBytes;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                hinh.InputStream.CopyTo(ms);
+                imageBytes = ms.ToArray();
+            }
+
+            // Gán mảng byte vào đối tượng sanpham
+            sanpham.HinhAnh = imageBytes;
+
+            // Thêm đối tượng sanpham vào cơ sở dữ liệu và lưu thay đổi
+            db.SanPhams.Add(sanpham);
+            db.SaveChanges();
+
+            // Chuyển hướng đến trang "quanly"
+            return RedirectToAction("quanly");
+        }
+
+
     }
 }

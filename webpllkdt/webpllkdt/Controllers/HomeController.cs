@@ -14,7 +14,7 @@ namespace webpllkdt.Controllers
     {
         ShopDBContext db = new ShopDBContext();
         // GET: TrangChu
-        public ActionResult Index()
+        public ActionResult Index(int Page = 1)
         {
             List<SanPham> sp = db.SanPhams.ToList();
             foreach (SanPham item in sp)
@@ -34,6 +34,14 @@ namespace webpllkdt.Controllers
                     }
                 }
             }
+            //Paging
+            int NoOfRecordPerPage = 20;
+            int NoOfPages = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(sp.Count) / Convert.ToDouble(NoOfRecordPerPage)));
+            int NoOfRecordToSkip = (Page - 1) * NoOfRecordPerPage;
+            ViewBag.Page = Page;
+            ViewBag.NoOfPages = NoOfPages;
+
+            sp = sp.Skip(NoOfRecordToSkip).Take(NoOfRecordPerPage).ToList();
             return View(sp);
         }
 
