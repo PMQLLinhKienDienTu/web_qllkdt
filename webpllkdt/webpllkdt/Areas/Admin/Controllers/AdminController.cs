@@ -147,7 +147,17 @@ namespace webpllkdt.Areas.Admin.Controllers
             // Chuyển hướng đến trang "quanly"
             return RedirectToAction("quanly");
         }
-
+        public ActionResult DuyetDonDatHang()
+        {
+            List<DatHang> dh = db.DatHangs.Where(row => row.TrangThai == false).ToList();
+            return View(dh);
+        }
+        public ActionResult ChiTietDonHang(int id)
+        {
+            DatHang dh = db.DatHangs.Where(row => row.MaDatHang == id).FirstOrDefault();
+            ViewBag.JsonSanPham = dh.JsonSanPham;
+            return View(dh);
+        }
 
     }
 }

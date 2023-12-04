@@ -6,44 +6,30 @@ namespace webpllkdt.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("NhanVien")]
-    public partial class NhanVien
+    [Table("NhaCungCap")]
+    public partial class NhaCungCap
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NhanVien()
+        public NhaCungCap()
         {
-            HoaDons = new HashSet<HoaDon>();
             NhapHangs = new HashSet<NhapHang>();
         }
 
         [Key]
-        public int MaNhanVien { get; set; }
+        public int MaNCC { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string TenNCC { get; set; }
 
         [StringLength(50)]
-        public string TenNhanVien { get; set; }
-
-        [StringLength(50)]
-        public string TaiKhoan { get; set; }
-
-        [StringLength(50)]
-        public string MatKhau { get; set; }
-
-        public bool? ChucVu { get; set; }
+        public string DiaChi { get; set; }
 
         [StringLength(50)]
         public string Email { get; set; }
 
-        [Required]
         [StringLength(50)]
-        public string SoDienThoai { get; set; }
-
-        public bool? TinhTrang { get; set; }
-
-        [Column(TypeName = "image")]
-        public byte[] HinhAnh { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public string Sdt { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhapHang> NhapHangs { get; set; }

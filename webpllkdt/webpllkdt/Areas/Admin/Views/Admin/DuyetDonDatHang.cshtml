@@ -1,0 +1,46 @@
+﻿@model List<webpllkdt.Models.DatHang>
+@{
+    ViewBag.Title = "DuyetDonDatHang";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<div class="d-flex justify-content-center">
+    <h2>THÔNG TIN ĐƠN HÀNG CẦN DUYỆT</h2>
+</div>
+<table class="table table-bordered">
+    <tr>
+        <th>Mã đơn hàng</th>
+        <th>Tên khách hàng</th>
+        <th>Số lượng SP đặt</th>
+        <th>Tổng tiền</th>
+        <th>Ngày đặt</th>
+        <th>Trạng Thái</th>
+        <th>Chi tiết</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MaDatHang</td>
+            <td>@item.KhachHang.HoTen</td>
+            <td>@item.SoLuongDat</td>
+            <td>@item.TongTien.Value.ToString("C")</td>
+            <td>@item.NgayDat.Value.ToString("dd/MM/yyyy")</td>
+            <td>
+                @if (item.TrangThai == false)
+                {
+
+
+                    <p class="text-danger">Chờ duyệt</p>
+                }
+                else
+                {
+                    <p class="text-success">Đã xác nhận</p>
+                }
+            </td>
+            <td>
+                <a class="btn btn-primary" href="chitietdonhang?id=@item.MaDatHang">Xem</a>
+            </td>
+        </tr>
+    }
+</table>
+
