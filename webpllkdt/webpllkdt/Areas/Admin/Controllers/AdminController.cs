@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using webpllkdt.Models;
 using System.IO;
 using System.Web;
+using webpllkdt.Filter;
 
 namespace webpllkdt.Areas.Admin.Controllers
 {
@@ -147,7 +148,47 @@ namespace webpllkdt.Areas.Admin.Controllers
             // Chuyển hướng đến trang "quanly"
             return RedirectToAction("quanly");
         }
-
-
+        public ActionResult DuyetDonDatHang()
+        {
+            List<DatHang> dh = db.DatHangs.Where(row => row.TrangThai == false).ToList();
+            return View(dh);
+        }
+        public ActionResult ChiTietDonHang(int id)
+        {
+            DatHang dh = db.DatHangs.Where(row => row.MaDatHang == id).FirstOrDefault();
+            ViewBag.JsonSanPham = dh.JsonSanPham;
+            return View(dh);
+        }
+        //Duyệt đơn hàng -  cập nhập trạng thái đơn hàng = true
+        public ActionResult DuyetDon(int id)
+        {
+            DatHang dh = db.DatHangs.Where(row => row.MaDatHang == id).FirstOrDefault();
+            dh.TrangThai = true;
+            HoaDon hd = new HoaDon();
+            DateTime ngayGioHienTai = DateTime.Now;
+            hd.NgayTaoHD = ngayGioHienTai;
+            hd.TongTienHoaDon = dh.TongTien;
+            hd.MaNhanVien = 1;
+            hd.MaKhachHang = dh.MaKhachHang;
+            db.HoaDons.Add(hd);
+            db.SaveChanges();
+            return RedirectToAction("DuyetDonDatHang");
+        }
+        public ActionResult DonDatHangDuyet()
+        {
+            List<DatHang> dh = db.DatHangs.Where(row => row.TrangThai == true).ToList();
+            return View(dh);
+        }
+        public ActionResult HoaDon()
+        {
+            List<HoaDon> hd = db.HoaDons.ToList();
+            List<NhanVien> nv = db.NhanViens.ToList();
+            List<DatHang> dh = db.DatHangs.ToList();
+            List<KhachHang> kh = db.KhachHangs.ToList();
+            ViewBag.nv = nv;
+            ViewBag.dh = dh;
+            ViewBag.kh = kh;
+            return View(hd);
+        }
     }
 }

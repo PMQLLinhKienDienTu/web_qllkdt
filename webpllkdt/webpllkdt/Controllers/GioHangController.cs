@@ -13,7 +13,7 @@ namespace webpllkdt.Controllers
         ShopDBContext db = new ShopDBContext();
         private const string CartSession = "CartSession";
         // GET: GioHang
-        [MyAuthenFilter]
+        //[MyAuthenFilter]
         public ActionResult Index()
         {
             var cart = Session[CartSession];
@@ -22,6 +22,8 @@ namespace webpllkdt.Controllers
             {
                 list = (List<CartItem>)cart;
             }
+            List<KhachHang> kh = db.KhachHangs.ToList();
+            ViewBag.kh = kh;
             return View(list);
         }
         public ActionResult DeleteAll()

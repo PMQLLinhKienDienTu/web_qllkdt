@@ -12,6 +12,7 @@ namespace webpllkdt.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KhachHang()
         {
+            DatHangs = new HashSet<DatHang>();
             HoaDons = new HashSet<HoaDon>();
         }
 
@@ -42,6 +43,9 @@ namespace webpllkdt.Models
 
         [StringLength(50)]
         public string DiaChi { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DatHang> DatHangs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }

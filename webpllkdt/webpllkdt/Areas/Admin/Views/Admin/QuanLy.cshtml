@@ -1,7 +1,7 @@
 ﻿@model List<webpllkdt.Models.SanPham>
 @{
     ViewBag.Title = "QuanLy";
-    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage2.cshtml";
 }
 
 <a href="/admin/admin/insert" class="btn btn-primary mb-3">Thêm sản phẩm mới</a>
@@ -27,8 +27,8 @@
             {
                 <i class="fa @ViewBag.IconClass"></i>}
         </th>
-        <th>Thương Hiệu</th>
-        <th style="width: 300px">
+        <th style="width: 25px">Thương Hiệu</th>
+        <th style="width: 100px">
 
             <a href="/admin/admin/quanly?SortColumn=TenSP&IconClass=@iconclass&Page=1">Tên sản phẩm</a>
             @if (ViewBag.SortColumn == "TenSP")
@@ -66,13 +66,11 @@
                 <img style="width: 80px; height: 80px; border: 1px solid lightgray; border-radius: 10px" src="~/img/HinhAnh/@(item.TenSP.Trim()).png" alt="Alternate Text" />
             </td>
             <td>
-                <a class="btn bg-success text-white"  href="/admin/admin/chitietsp/@item.MaSP">Chi tiết</a> <br />
-                <a class="btn bg-success text-white mt-2" href="/admin/admin/editsanpham?id=@item.MaSP">Edit Thông tin</a>
+                <a class="btn bg-success text-white mt-3" href="/admin/admin/chitietsp/@item.MaSP">Chi tiết</a> <br />
             </td>
             <td>
-                @*<a href="/admin/admin/edit/@item.MaSP">Edit</a> <br />
-                <br />*@
-                <a class="btn bg-danger text-white" href="/admin/admin/deletesanpham/@item.MaSP">Xóa</a>
+                <a class="btn bg-success text-white mt-3" href="/admin/admin/editsanpham?id=@item.MaSP">Edit Thông tin</a>
+                <a class="btn bg-danger text-white mt-3" href="/admin/admin/deletesanpham/@item.MaSP">Xóa</a>
             </td>
 
         </tr>

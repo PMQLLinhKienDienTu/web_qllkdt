@@ -18,6 +18,15 @@ namespace webpllkdt.Models
 
         public int MaSp { get; set; }
 
+        public int? mahoadon { get; set; }
+
+        public bool? TrangThai { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? NgayTH { get; set; }
+
         public virtual SanPham SanPham { get; set; }
+
+        public virtual HoaDon HoaDon { get; set; }
     }
 }

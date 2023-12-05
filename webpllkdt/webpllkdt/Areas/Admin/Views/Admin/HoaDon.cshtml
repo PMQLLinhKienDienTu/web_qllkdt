@@ -1,0 +1,89 @@
+﻿@model List<webpllkdt.Models.HoaDon>
+@{
+    ViewBag.Title = "HoaDon";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage2.cshtml";
+}
+
+<div class="d-flex justify-content-center">
+    <h2>THÔNG TIN HÓA ĐƠN</h2>
+</div>
+@{
+    ViewBag.id = null;
+}
+@if (Model.Count != 0)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>Mã Hóa Đơn</th>
+            <th>Ngày Tạo Hóa Đơn</th>
+            <th>Tổng Tiền Hóa Đơn</th>
+            <th>Tên Nhân Viên</th>
+            <th>Tên Khách Hàng</th>
+            <th>Chi tiết</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <!-- Các cột thông tin hóa đơn -->
+                <td>@item.MaHoaDon</td>
+                <td>@item.NgayTaoHD</td>
+                <td>@item.TongTienHoaDon.Value.ToString("C")</td>
+
+                <!-- Hiển thị tên nhân viên -->
+                @{
+                    List<webpllkdt.Models.NhanVien> nvList = ViewBag.nv;
+                    var nv = nvList.FirstOrDefault(n => n.MaNhanVien == item.MaNhanVien);
+                }
+                <td>
+                    @if (nv != null)
+                    {
+                        @nv.TenNhanVien
+                    }
+                </td>
+
+                <!-- Hiển thị tên khách hàng -->
+                @{
+                    List<webpllkdt.Models.KhachHang> khList = ViewBag.kh;
+                    var kh = khList.FirstOrDefault(k => k.MaKhachHang == item.MaKhachHang);
+                }
+
+                <td>
+                    @if (kh != null)
+                    {
+                        @kh.HoTen
+                    }
+                </td>
+
+                <!-- Cột chi tiết -->
+                <td>
+                    @{
+                        List<webpllkdt.Models.DatHang> dathang = ViewBag.dh;
+                        var dh = dathang.FirstOrDefault(d => d.MaKhachHang == item.MaKhachHang);
+
+                        string id = dh != null ? dh.MaDatHang.ToString() : ""; // Lấy MaDatHang nếu có, nếu không gán giá trị rỗng
+
+                        if (id != "")
+                        {
+                            <a class="btn btn-primary" href="chitietdonhang?id=@id">Xem</a>
+                        }
+                        else
+                        {
+                            @*<a class="btn btn-primary" href="#">Xem Chi Tiết Trên Phần Mềm</a>*@
+                        }
+                    }
+
+                </td>
+
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <div class="d-flex justify-content-center mt-4">
+        <p class="text-primary" style="font-size: 25px">không có thông tin hóa đơn đặt hàng</p>
+    </div>
+    <a class="btn btn-primary" href="/admin/admin/dondathangduyet">Xem đơn hàng đã duyệt</a>
+}
+

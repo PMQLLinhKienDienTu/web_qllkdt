@@ -34,7 +34,7 @@ namespace webpllkdt.Controllers
                 authenManager.SignIn(new AuthenticationProperties(), userIdentity);
                 if (userManager.IsInRole(user.Id, "Admin"))
                 {
-                    return RedirectToAction("index", "home", new { area = "Admin" });
+                    return RedirectToAction("QuanLy", "Admin", new { area = "Admin" });
                 }
                 else
                 {
