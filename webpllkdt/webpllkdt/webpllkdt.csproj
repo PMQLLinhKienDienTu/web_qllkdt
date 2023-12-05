@@ -195,6 +195,7 @@
     <Content Include="Areas\Admin\Views\Admin\Insert.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DuyetDonDatHang.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\ChiTietDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DonDatHangDuyet.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />

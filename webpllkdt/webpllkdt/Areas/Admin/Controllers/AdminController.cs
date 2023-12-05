@@ -158,6 +158,18 @@ namespace webpllkdt.Areas.Admin.Controllers
             ViewBag.JsonSanPham = dh.JsonSanPham;
             return View(dh);
         }
-
+        //Duyệt đơn hàng -  cập nhập trạng thái đơn hàng = true
+        public ActionResult DuyetDon(int id)
+        {
+            DatHang dh = db.DatHangs.Where(row => row.MaDatHang == id).FirstOrDefault();
+            dh.TrangThai = true;
+            db.SaveChanges();
+            return RedirectToAction("DuyetDonDatHang");
+        }
+        public ActionResult DonDatHangDuyet()
+        {
+            List<DatHang> dh = db.DatHangs.Where(row => row.TrangThai == true).ToList();
+            return View(dh);
+        }
     }
 }
