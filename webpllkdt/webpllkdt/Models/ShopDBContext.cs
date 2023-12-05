@@ -8,7 +8,7 @@ namespace webpllkdt.Models
     public partial class ShopDBContext : DbContext
     {
         public ShopDBContext()
-            : base("name=ShopDBContextString")
+            : base("name=ShopDBContext")
         {
         }
 
@@ -26,10 +26,6 @@ namespace webpllkdt.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DatHang>()
-                .Property(e => e.JsonSanPham)
-                .IsUnicode(false);
-
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.TaiKhoan)
                 .IsFixedLength();

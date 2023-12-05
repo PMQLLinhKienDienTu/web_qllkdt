@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using webpllkdt.Models;
 using System.IO;
 using System.Web;
+using webpllkdt.Filter;
 
 namespace webpllkdt.Areas.Admin.Controllers
 {
@@ -163,6 +164,13 @@ namespace webpllkdt.Areas.Admin.Controllers
         {
             DatHang dh = db.DatHangs.Where(row => row.MaDatHang == id).FirstOrDefault();
             dh.TrangThai = true;
+            HoaDon hd = new HoaDon();
+            DateTime ngayGioHienTai = DateTime.Now;
+            hd.NgayTaoHD = ngayGioHienTai;
+            hd.TongTienHoaDon = dh.TongTien;
+            hd.MaNhanVien = 1;
+            hd.MaKhachHang = dh.MaKhachHang;
+            db.HoaDons.Add(hd);
             db.SaveChanges();
             return RedirectToAction("DuyetDonDatHang");
         }
@@ -170,6 +178,17 @@ namespace webpllkdt.Areas.Admin.Controllers
         {
             List<DatHang> dh = db.DatHangs.Where(row => row.TrangThai == true).ToList();
             return View(dh);
+        }
+        public ActionResult HoaDon()
+        {
+            List<HoaDon> hd = db.HoaDons.ToList();
+            List<NhanVien> nv = db.NhanViens.ToList();
+            List<DatHang> dh = db.DatHangs.ToList();
+            List<KhachHang> kh = db.KhachHangs.ToList();
+            ViewBag.nv = nv;
+            ViewBag.dh = dh;
+            ViewBag.kh = kh;
+            return View(hd);
         }
     }
 }
