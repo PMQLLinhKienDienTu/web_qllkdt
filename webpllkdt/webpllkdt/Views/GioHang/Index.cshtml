@@ -34,7 +34,7 @@
         <h2 class="">Giỏ Hàng</h2>
     </div>
     <div class="col-6 d-flex justify-content-end">
-        <a class="btn btn-outline-danger mt-3 mb-3" href="/cart/deleteall">Xoá giỏ hàng</a>
+        <a class="btn btn-outline-danger mt-3 mb-3" href="/GioHang/deleteall">Xoá giỏ hàng</a>
     </div>
 </div>
 @foreach (var item in Model)
@@ -59,7 +59,7 @@
                 <td class="align-middle">@item.SanPhams.MaSP</td>
                 <td>@item.SanPhams.TenSP</td>
                 <td>
-                    <img style="width: 100px; height: 100px; border-radius: 15px" src="~/img/HinhAnh/@(item.SanPhams.TenSP).png" alt="Alternate Text" />
+                    <img style="width: 100px; height: 100px; border-radius: 15px" src="~/img/HinhAnh/@((item.SanPhams.TenSP).Trim()).png" alt="Alternate Text" />
                 </td>
                 <td class="d-flex justify-content-center align-items-center">
                     <input class="w-50 form-control" type="number" id="@ViewBag.soluong" name="quantity" value="@item.Quantity" />
