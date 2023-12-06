@@ -1,0 +1,43 @@
+﻿@model webpllkdt.Models.KhachHang
+
+@{
+    ViewBag.Title = "ThemKhachHang";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<form action="/home/ThemKhachHang" method="post" enctype="multipart/form-data">
+    <div class="d-flex justify-content-center">
+        <h2>THÔNG TIN ĐẶT HÀNG</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label for="HoTen">
+                Tên khách hàng
+            </label>
+            <input class="form-control" type="text" name="HoTen" id="HoTen" required />
+        </div>
+        <div class="col-md-12">
+            <label for="SDT">
+                Số điện thoại
+            </label>
+            <input class="form-control" type="tel" name="SDT" id="SDT" required />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label for="Email">
+                Email
+            </label>
+            <input class="form-control" type="email" name="Email" id="Email" required />
+        </div>
+        <div class="col-md-12">
+            <label for="DiaChi">Địa chỉ</label>
+            <input class="form-control" type="text" name="DiaChi" id="DiaChi" required />
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary m-3" id="confirmBtn">Xác nhận</button>
+        <a class="btn btn-danger m-3" type="button" id="cancelBtn" href="/GioHang/index">Quay Lại</a>
+    </div>
+</form>
+
